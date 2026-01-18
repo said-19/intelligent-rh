@@ -1,0 +1,40 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: recrutement-service
+  datasource:
+    url: jdbc:mysql://localhost:3306/recrutement_db?createDatabaseIfNotExist=true
+    username: root
+    password:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.MySQLDialect
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 5000
+      talent-management-service:
+        loggerLevel: FULL
+
+app:
+  services:
+    url: http://localhost:9000
+
+logging:
+  level:
+    tn.esprit.recrutement: DEBUG
+    org.springframework.cloud.openfeign: DEBUG

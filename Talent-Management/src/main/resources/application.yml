@@ -1,0 +1,34 @@
+server:
+  port: 9000
+
+spring:
+  application:
+    name: talent-management-service
+  datasource:
+    url: jdbc:mysql://localhost:3306/talent_db?createDatabaseIfNotExist=true
+    username: root
+    password:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.MySQL8Dialect
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+
+file:
+  path: "./uploads"
+
+eureka:
+  client:
+    enabled: false # Désactivé car vous utilisez des URLs directes
+
+logging:
+  level:
+    # Vérifiez que ce package correspond bien à vos entités/controllers
+    tn.esprit.employees: DEBUG
